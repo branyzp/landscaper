@@ -25,7 +25,7 @@ const tools = [
 		moneyEarned: 250,
 	},
 	{
-		name: 'None',
+		name: 'Maxed',
 	},
 ];
 
@@ -34,64 +34,83 @@ let toolLevel = 0;
 let currentTool = tools[toolLevel];
 let nextTool = tools[toolLevel + 1];
 
+const errorMsg = () => {
+	alert('There are no more upgrades available.');
+};
+
+const getName = () => {
+	let pName = prompt('Please enter your Player Name');
+	$('#pName').text('Player: ' + pName);
+};
+
+const updateBackground = () => {
+	$('body').css('background-image', 'url(images/' + toolLevel + '.png)');
+};
+
+const toggleBtn = () => {
+	$('button').toggle();
+};
+
+const reset = () => {
+	money = 0;
+	toolLevel = 0;
+	currentTool = tools[toolLevel];
+	nextTool = tools[toolLevel + 1];
+};
+
 const checkWin = () => {
-	if (nextTool.name === 'None' && money > 1000) {
+	if (nextTool.name === 'Maxed' && money >= 1000) {
 		if (confirm('You have won lah. Want to play again?') === true) {
-			money = 0;
-			toolLevel = 0;
-			currentTool = tools[toolLevel];
-			nextTool = tools[toolLevel + 1];
-			$('#money').text('$' + money);
-			$('#current-tool').text(
-				'You are currently using your ' +
-					currentTool.name.toLowerCase() +
-					' to mow the lawn.'
-			);
-			$('#next-tool').text('Next upgrade: ' + nextTool.name);
+			reset();
+			display();
 		} else {
-			alert('Fine. Arrogant.');
+			alert('Fine. Arrogant. No more upgrades for you anyway.');
+			toggleBtn();
 		}
 	}
 };
 
-const upgradeTool = () => {
-	if (nextTool.price > money) {
-		alert(
-			'You do not have enough money to purchase the next tool, continue working, peasant.'
-		);
-	} else {
-		money = money - nextTool.price;
-		$('#money').text('$' + money);
-
-		toolLevel += 1;
-		currentTool = tools[toolLevel];
-		$('#current-tool').text(
-			'You are currently using your ' +
-				currentTool.name.toLowerCase() +
-				' to mow the lawn.'
-		);
-
-		nextTool = tools[toolLevel + 1];
-		$('#next-tool').text('Next upgrade: ' + nextTool.name);
-	}
-};
-
-const useTool = () => {
-	money += currentTool.moneyEarned;
-	$('#money').text('$' + money);
-	checkWin();
-};
-
-const main = () => {
+const display = () => {
 	$('#money').text('$' + money);
 	$('#current-tool').text(
 		'You are currently using your ' +
 			currentTool.name.toLowerCase() +
 			' to mow the lawn.'
 	);
-	$('#next-tool').text('Next upgrade: ' + nextTool.name);
+	$('#next-tool').text(nextTool.name);
+	updateBackground();
+};
+
+const upgradeTool = () => {
+	if (nextTool.name === 'None') {
+		$('#upgrade-tool').on('click', errorMsg);
+	} else if (nextTool.price > money) {
+		alert(
+			'You do not have enough money to purchase the next tool, continue working, peasant.'
+		);
+	} else {
+		money = money - nextTool.price;
+
+		toolLevel += 1;
+		currentTool = tools[toolLevel];
+
+		nextTool = tools[toolLevel + 1];
+		display();
+	}
+};
+
+const useTool = () => {
+	money += currentTool.moneyEarned;
+	display();
+	checkWin();
+};
+
+const main = () => {
+	display();
+	getName();
 	$('#use-tool').on('click', useTool);
 	$('#upgrade-tool').on('click', upgradeTool);
+	$('#reset').on('click', reset).on('click', display);
 };
 
 $(main);

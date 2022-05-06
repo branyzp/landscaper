@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,24 +9,45 @@
     <link
         href="data:image/x-icon;base64,AAABAAEAEBACAAAAAACwAAAAFgAAACgAAAAQAAAAIAAAAAEAAQAAAAAAQAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAKoAAAGAAAAH4AAAH/AAABmYAAAZmAAAAZgAAAGYAAAH8AAAD+AAABmAAAAZgAAAGZgAABmYAAAP+AAAB+AAAAGAAAD+fwAA+B8AAOAPAADmZwAA5mcAAP5nAAD+ZwAA+A8AAPAfAADmfwAA5n8AAOZnAADmZwAA8AcAAPgfAAD+fwAA"
         rel="icon" type="image/x-icon" />
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
-            <title>God of Landscaping</title>
+    <title>God of Landscaping</title>
 </head>
+
 <body>
-    <H1>Intro Msg</H1> 
+    <H1 id="intro">Welcome to God of Landscaping, an interactive Role-Playing Game where you play as the Heroic
+        Landscaper.
+        <br>
+        <br>
+        Your aim isn't to save a princess, defeat a villain or rescue a village.
+        <br>
+        <br>
+        Your aim is to earn as much as money as possible. That's right. This is one of the most realistic games you can
+        ever play.
+        <br>
+        <br>
+        Now, go forth and use whatever you can to earn as much as you can. Probably through landscaping or something,
+        then invest it all into the S&P500, also known as adulting.
+    </H1>
     <div class="container">
-        <button id="use-tool">Use Tool</button>
+        <h1 id="pName"></h1>
+        <hr>
+        <h2>Your current funds: </h2>
         <h1 id="money"></h1>
+        <hr>
         <h1 id="current-tool"></h1>
+        <h2>Next upgrade:</h2>
         <h1 id="next-tool"></h1>
+        <button id="use-tool">Use Tool</button>
         <button id="upgrade-tool">Upgrade Tool</button>
+        <button id="reset">Reset</button>
 
 
     </div>
     <script src="app.js"></script>
 </body>
+
 </html>
