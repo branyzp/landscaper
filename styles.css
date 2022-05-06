@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(73, 96, 101);
+    background-image: url(images/Adventure\ Time\ Treehouse\ 2560x1440\ wallpapers.jpg);
+    background-size: cover;
+}
+
+h1{
+    background-color: white;
+    width: 20%;
+    
+}
+
+div{
+    background-color: white;
+    width: 20%;
+    display: inline-block;
+}
