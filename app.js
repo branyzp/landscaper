@@ -5,7 +5,7 @@ const tools = [
 		moneyEarned: 1,
 	},
 	{
-		name: 'A Pair of Rusty Scissors',
+		name: 'Rusty Scissors',
 		price: 5,
 		moneyEarned: 5,
 	},
@@ -26,6 +26,7 @@ const tools = [
 	},
 	{
 		name: 'Maxed',
+		price: 'N/A',
 	},
 ];
 
@@ -77,12 +78,12 @@ const display = () => {
 			currentTool.name.toLowerCase() +
 			' to mow the lawn.'
 	);
-	$('#next-tool').text(nextTool.name);
+	$('#next-tool').text(nextTool.name + ': $ ' + nextTool.price);
 	updateBackground();
 };
 
 const upgradeTool = () => {
-	if (nextTool.name === 'None') {
+	if (nextTool.name === 'Maxed') {
 		$('#upgrade-tool').on('click', errorMsg);
 	} else if (nextTool.price > money) {
 		alert(
