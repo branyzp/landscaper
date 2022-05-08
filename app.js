@@ -73,6 +73,7 @@ const checkWin = () => {
 
 const display = () => {
 	$('#money').text('$' + money);
+	$('#daily-earnings').text('Earnings per day: $' + currentTool.moneyEarned);
 	$('#current-tool').text(
 		'You are currently using your ' +
 			currentTool.name.toLowerCase() +
